@@ -5,17 +5,11 @@
   <h1>Latest matches:</h1>
 
 <?php
-$server = "localhost";
-$db = "warden";
-$user = "root";
-$pass = "#tlyps32";
-$conn = new mysqli($server,$user,$pass,$db);
-$getAllSql = "SELECT * FROM hero_names";
-$response = $conn->query($getAllSql);
 $heroesArray = [];
-$apiKey = "9AAC511CA9F6E38435866DD57DDDACA2";
+$apiKey = trim(file_get_contents(__DIR__ . '/apikey'));
+//$apiKey = "9AAC511CA9F6E38435866DD57DDDACA2";
 function getHeroesArray(){
-  $apiKey = "9AAC511CA9F6E38435866DD57DDDACA2";
+  global $apiKey;
   $heroesArray = [];
   $getHeroesUrl = "https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001/?key=" . $apiKey;
   $ch = curl_init($getHeroesUrl);

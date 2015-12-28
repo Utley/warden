@@ -11,8 +11,9 @@
 
 <?php
 $matchID = $_REQUEST['match'];
+$apiKey = trim(file_get_contents(__DIR__ . '/apikey'));
 function getHeroesArray(){
-  $apiKey = "9AAC511CA9F6E38435866DD57DDDACA2";
+  global $apiKey;
   $heroesArray = [];
   $getHeroesUrl = "https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001/?key=" . $apiKey;
   $ch = curl_init($getHeroesUrl);
@@ -29,7 +30,7 @@ function getHeroesArray(){
   return $heroesArray;
 };
 function getItemsArray(){
-  $apiKey = "9AAC511CA9F6E38435866DD57DDDACA2";
+  global $apiKey;
   $heroesArray = [];
   $getHeroesUrl = "https://api.steampowered.com/IEconDOTA2_570/GetGameItems/v0001/?key=" . $apiKey . "&language=en";
   $ch = curl_init($getHeroesUrl);
@@ -46,7 +47,7 @@ function getItemsArray(){
   return $heroesArray;
 };
 function getMatchDetails($matchID){
-  $apiKey = "9AAC511CA9F6E38435866DD57DDDACA2";
+  global $apiKey;
   $detailsURL = "https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/V001/?match_id=$matchID&key=$apiKey";
   $ch = curl_init($detailsURL);
 
