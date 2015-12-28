@@ -12,7 +12,7 @@
 <?php
 $matchID = $_REQUEST['match'];
 $playerID = $_REQUEST['player'];
-$apiKey = trim(file_get_contents(__DIR__, '/apikey'));
+$apiKey = trim(file_get_contents('/keys/apikey'));
 
 function getHeroesArray(){
   gloabl $apiKey;  

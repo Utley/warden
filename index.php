@@ -6,8 +6,7 @@
 
 <?php
 $heroesArray = [];
-$apiKey = trim(file_get_contents(__DIR__ . '/apikey'));
-//$apiKey = "9AAC511CA9F6E38435866DD57DDDACA2";
+$apiKey = trim(file_get_contents('/keys/apikey'));
 function getHeroesArray(){
   global $apiKey;
   $heroesArray = [];

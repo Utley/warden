@@ -11,7 +11,8 @@
 
 <?php
 $matchID = $_REQUEST['match'];
-$apiKey = trim(file_get_contents(__DIR__ . '/apikey'));
+$apiKey = trim(file_get_contents('/keys/apikey'));
+
 function getHeroesArray(){
   global $apiKey;
   $heroesArray = [];
