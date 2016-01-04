@@ -79,10 +79,10 @@ function getMatchDetails($matchID){
   for($i = 0; $i < count($players); $i++){
     $player = $players[$i];
     if($i < count($players) / 2){
-      echo "<tr class='bg-danger'>";
+      echo "<tr class='success'>";
     }
     else {
-      echo "<tr class='bg-success'>";
+      echo "<tr class='danger'>";
     }
     echo "<td>";
     if(isset($players[$i]->hero_id)){
