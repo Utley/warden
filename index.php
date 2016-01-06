@@ -2,7 +2,7 @@
 <head>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-
+<link rel="stylesheet" href="css/default.css" />
 </head>
 <body>
   <?php include 'nav.php' ?>

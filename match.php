@@ -7,6 +7,7 @@
       transform: scale(.5);
     }
   </style>
+  <link rel="stylesheet" href="css/default.css" />
 </head>
 <body>
 <?php include 'nav.php' ?>

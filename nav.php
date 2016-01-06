@@ -1,4 +1,5 @@
-<!-- simple header, styling comes later -->
-<a href="index.php">home</a>
-<a href="match.php">match lookup</a>
-<a href="player.php">player lookup</a>
+<div id="nav">
+<a href="index.php">Home</a>
+<a href="match.php">Match Lookup</a>
+<a href="player.php">Player Lookup</a>
+</div>
