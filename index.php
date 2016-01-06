@@ -10,25 +10,12 @@
 <?php
 $heroesArray = [];
 $apiKey = trim(file_get_contents('/keys/apikey'));
-function getHeroesArray(){
-  global $apiKey;
-  $heroesArray = [];
-  $getHeroesUrl = "https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001/?key=" . $apiKey;
-  $ch = curl_init($getHeroesUrl);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);    # required for https urls
-  $heroesResult = curl_exec($ch);
-  curl_close($ch);
-  $heroesObject = json_decode($heroesResult);
-  $heroesObjectArray = $heroesObject->result->heroes;
-  foreach ($heroesObjectArray as $hero){
-    $heroesArray[$hero->id] = $hero->name;
-  }
-  return $heroesArray;
-};
+
+include 'heroesLib.php';
+
 $heroesArray = getHeroesArray();
-$steamUrl = "https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/V001/?format=JSON&matches_requested=2&key=" . $apiKey;
+$numberMatches = 5;
+$steamUrl = "https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/V001/?format=JSON&matches_requested=" . $numberMatches . "&key=" . $apiKey;
 $ch = curl_init($steamUrl);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
@@ -51,8 +38,9 @@ for($i = 0; $i < sizeof($latestMatches); $i++){
       echo '<img src="' . 'http://cdn.dota2.com/apps/dota2/images/heroes/' . $smallName . '_sb.png" title="' . $smallName . '"/>';
     }
     else{
-      echo "Hero unavailable";
+      echo '<img src="unknown.png" />';
     }
+
     echo '<br>';
   }
   echo '<br>';
