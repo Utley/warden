@@ -17,20 +17,20 @@ include 'heroesLib.php';
 
 function getItemsArray(){
   global $apiKey;
-  $heroesArray = [];
-  $getHeroesUrl = "https://api.steampowered.com/IEconDOTA2_570/GetGameItems/v0001/?key=" . $apiKey . "&language=en";
-  $ch = curl_init($getHeroesUrl);
+  $itemsArray = [];
+  $getItemsUrl = "https://api.steampowered.com/IEconDOTA2_570/GetGameItems/v0001/?key=" . $apiKey . "&language=en";
+  $ch = curl_init($getItemsUrl);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);    # required for https urls
   $heroesResult = curl_exec($ch);
   curl_close($ch);
-  $heroesObject = json_decode($heroesResult);
-  $heroesObjectArray = $heroesObject->result->items;
-  foreach ($heroesObjectArray as $hero){
-    $heroesArray[$hero->id] = $hero->name;
+  $itemsObject = json_decode($heroesResult);
+  $itemsObjectArray = $itemsObject->result->items;
+  foreach ($itemsObjectArray as $item){
+    $itemsArray[$item->id] = $item->name;
   }
-  return $heroesArray;
+  return $itemsArray;
 };
 function getMatchDetails($matchID){
   global $apiKey;
