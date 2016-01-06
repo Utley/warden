@@ -9,6 +9,7 @@
   </style>
 </head>
 <body>
+<?php include 'nav.php' ?>
 <form action="match.php">
   <input type="text" name="match" id="matchId" />
   <input type="submit" />
