@@ -60,14 +60,13 @@ function getMatchDetails($matchID){
       echo "<tr class='danger'>";
     }
     echo "<td>";
-    if(isset($players[$i]->hero_id)){
-      $smallName = str_replace("npc_dota_hero_","",$heroesArray[$players[$i]->hero_id]);
+    if($player->hero_id > 0){
+      $smallName = str_replace("npc_dota_hero_","",$heroesArray[$player->hero_id]);
       //echo "Hero: " . $smallName;
       echo '<img src="' . 'http://cdn.dota2.com/apps/dota2/images/heroes/' . $smallName . '_sb.png"/>';
-
     }
     else{
-      echo "no hero;";
+      echo '<img src="unknown.png" />';
     }
     echo "</td>";
     echo "<td>";
