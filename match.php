@@ -2,6 +2,11 @@
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
   <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <style>
+    .item {
+      transform: scale(.5);
+    }
+  </style>
 </head>
 <body>
 <form action="match.php">
@@ -78,7 +83,7 @@ function getMatchDetails($matchID){
       $item = $itemsArray[$items[$j]];
       $shortName = str_replace("item_","",$item);
       if(substr_count("item_",$shortName) > -1){
-        echo "<td><img src='http://cdn.dota2.com/apps/dota2/images/items/" . $shortName . "_lg.png'></td>";
+        echo "<td><img class='item' src='http://cdn.dota2.com/apps/dota2/images/items/" . $shortName . "_lg.png'></td>";
       }
       else{
         echo "<td></td>";
