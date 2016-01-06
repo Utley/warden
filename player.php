@@ -11,7 +11,7 @@
 </form>
 
 <?php
-$playerID = $_REQUEST['player'];
+$playerID = isset($_REQUEST['player']) ? $_REQUEST['player'] : 108672990;
 $apiKey = trim(file_get_contents('/keys/apikey'));
 
 include 'heroesLib.php';
@@ -19,7 +19,7 @@ include 'heroesLib.php';
 function getPlayerHistory($playerID){
   global $apiKey;
   $matchesArray = [];
-  $getHeroesUrl = "https://api.steampowered.com/IEconDOTA2_570/GetMatchHistory/v0001/?key=" . $apiKey . "&account_id=" . $playerID;
+  $getHeroesUrl = "https://api.steampowered.com/IEconDOTA2_570/GetMatchHistory/v001/?format=JSON&key=" . $apiKey . "&account_id=" . $playerID;
   $ch = curl_init($getHeroesUrl);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);

@@ -4,7 +4,7 @@
   <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
   <style>
     .item {
-      transform: scale(.5);
+      height: 33px;
     }
   </style>
   <link rel="stylesheet" href="css/default.css" />
@@ -63,8 +63,7 @@ function getMatchDetails($matchID){
     echo "<td>";
     if($player->hero_id > 0){
       $smallName = str_replace("npc_dota_hero_","",$heroesArray[$player->hero_id]);
-      //echo "Hero: " . $smallName;
-      echo '<img src="' . 'http://cdn.dota2.com/apps/dota2/images/heroes/' . $smallName . '_sb.png"/>';
+      echo '<img src="http://cdn.dota2.com/apps/dota2/images/heroes/' . $smallName . '_sb.png"/>';
     }
     else{
       echo '<img src="unknown.png" />';
@@ -87,7 +86,7 @@ function getMatchDetails($matchID){
         echo "<td><img class='item' src='http://cdn.dota2.com/apps/dota2/images/items/" . $shortName . "_lg.png'></td>";
       }
       else{
-        echo "<td></td>";
+        echo "<td><img class='item' src='unknown.png' /></td>";
       }
     }
     echo "</tr>";
