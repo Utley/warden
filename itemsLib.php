@@ -6,7 +6,7 @@ function getItemsArray(){
   $ch = curl_init($getItemsUrl);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);    # required for https urls
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, TRUE);    # required for https urls
   $heroesResult = curl_exec($ch);
   curl_close($ch);
   $itemsObject = json_decode($heroesResult);
