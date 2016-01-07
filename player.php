@@ -19,11 +19,11 @@ include 'heroesLib.php';
 function getPlayerHistory($playerID){
   global $apiKey;
   $matchesArray = [];
-  $getMatchesUrl = "https://api.steampowered.com/IEconDOTA2_570/GetMatchHistory/v001/?format=JSON&key=" . $apiKey . "&account_id=" . $playerID;
+  $getMatchesUrl = "https://api.steampowered.com/IEconDOTA2_570/GetMatchHistory/v0001/?format=JSON&key=" . $apiKey . "&account_id=" . $playerID;
   $ch = curl_init($getMatchesUrl);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);    # required for https urls
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, TRUE);
   $matchesResult = curl_exec($ch);
   curl_close($ch);
   $matchesObject = json_decode($matchesResult);
