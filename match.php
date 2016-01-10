@@ -39,7 +39,7 @@ function getMatchDetails($matchID){
   $players = $matchObject->result->players;
   $heroesArray = getHeroesArray();
   $itemsArray = getItemsArray();
-  echo "<h1>" . $matchID . "</h1>";
+  echo "<h1>$matchID</h1>";
 
   echo "<table class='table table-striped'>";
   echo "<tr>";
@@ -63,20 +63,18 @@ function getMatchDetails($matchID){
     echo "<td>";
     if($player->hero_id > 0){
       $smallName = str_replace("npc_dota_hero_","",$heroesArray[$player->hero_id]);
-      echo '<img src="http://cdn.dota2.com/apps/dota2/images/heroes/' . $smallName . '_sb.png"/>';
+      echo "<img src="http://cdn.dota2.com/apps/dota2/images/heroes/$smallName" . "_sb.png"/>';
     }
     else{
       echo '<img src="unknown.png" />';
     }
     echo "</td>";
-    echo "<td>";
-    echo $players[$i]->last_hits;
-    echo "</td>";
-    echo "<td>" . $player->denies       . "</td>";
-    echo "<td>" . $player->xp_per_min   . "</td>";
-    echo "<td>" . $player->gold_per_min . "</td>";
-    echo "<td>" . $player->hero_damage  . "</td>";
-    echo "<td>" . $player->tower_damage . "</td>";
+    echo "<td>$players[$i]->last_hits</td>";
+    echo "<td>$player->denies</td>";
+    echo "<td>$player->xp_per_min</td>";
+    echo "<td>$player->gold_per_min</td>";
+    echo "<td>$player->hero_damage</td>";
+    echo "<td>$player->tower_damage</td>";
 
     $items = [$player->item_0, $player->item_1, $player->item_2, $player->item_3, $player->item_4, $player->item_5];
     for( $j = 0; $j < count($items); $j++ ){
