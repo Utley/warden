@@ -22,21 +22,12 @@ $apiKey = trim(file_get_contents('/keys/apikey'));
 
 include 'heroesLib.php';
 include 'itemsLib.php';
+include 'matchLib.php';
 
-function getMatchDetails($matchID){
+function getMatchDetails( $matchID ){
   global $apiKey;
-  $detailsURL = "https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/V001/?match_id=$matchID&key=$apiKey";
-  $ch = curl_init($detailsURL);
 
-  $optArray = array(
-    CURLOPT_RETURNTRANSFER => true
-  );
-
-  curl_setopt_array($ch, $optArray);
-
-  $response = curl_exec($ch);
-  $matchObject = json_decode($response);
-  $players = $matchObject->result->players;
+  $players = getPlayersArray( $matchID );
   $heroesArray = getHeroesArray();
   $itemsArray = getItemsArray();
   echo "<h1>$matchID</h1>";
