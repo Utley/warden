@@ -63,13 +63,13 @@ function getMatchDetails($matchID){
     echo "<td>";
     if($player->hero_id > 0){
       $smallName = str_replace("npc_dota_hero_","",$heroesArray[$player->hero_id]);
-      echo "<img src="http://cdn.dota2.com/apps/dota2/images/heroes/$smallName" . "_sb.png"/>';
+      echo "<img src='http://cdn.dota2.com/apps/dota2/images/heroes/$smallName" . "_sb.png'/>";
     }
     else{
       echo '<img src="unknown.png" />';
     }
     echo "</td>";
-    echo "<td>$players[$i]->last_hits</td>";
+    echo "<td>$player->last_hits</td>";
     echo "<td>$player->denies</td>";
     echo "<td>$player->xp_per_min</td>";
     echo "<td>$player->gold_per_min</td>";
