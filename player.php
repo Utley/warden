@@ -30,10 +30,10 @@ function getPlayerHistory($playerID){
   $matchesObjectArray = $matchesObject->result->matches;
   return $matchesObjectArray;
 };
-echo "<h1>Player: " 
+echo "<h1>Player: " . $playerID . "<br>";
 $matches = getPlayerHistory($playerID);
 foreach($matches as $match){
-  echo $match->match_id . "<br>";
+  echo "<a href='match.php?match=" . "$match->match_id'>" . $match->match_id . "</a><br>";
 }
 ?>
 </body>
