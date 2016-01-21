@@ -27,10 +27,12 @@ include 'matchLib.php';
 function getMatchDetails( $matchID ){
   global $apiKey;
 
-  $players = getPlayersArray( $matchID );
   $heroesArray = getHeroesArray();
   $itemsArray = getItemsArray();
-  echo "<h1>$matchID</h1>";
+  $match = getMatchObject( $matchID );
+  $players = $match->players;
+  echo "<h1>$matchID ($match->game_mode)</h1>";
+  echo "<h2>Began on " . date("l, F jS G:i:s", $match->start_time) . "</h2>";
 
   echo "<table class='table table-striped'>";
   echo "<tr>";

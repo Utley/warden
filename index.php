@@ -36,7 +36,9 @@ for($i = 0; $i < sizeof($latestMatches); $i++){
     $smallName;
     if($player->hero_id > 0){
       $smallName = str_replace("npc_dota_hero_","",$heroesArray[$player->hero_id]);
+      echo "<a href='player.php?player=$player->account_id'>";
       echo '<img src="' . 'http://cdn.dota2.com/apps/dota2/images/heroes/' . $smallName . '_sb.png" title="' . $smallName . '"/>';
+      echo "</a>";
     }
     else{
       echo '<img src="unknown.png" />';

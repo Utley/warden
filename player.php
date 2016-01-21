@@ -11,7 +11,26 @@
 </form>
 
 <?php
+include('openid.php');
 $playerID = isset($_REQUEST['player']) ? $_REQUEST['player'] : "76561198068938718"; //32 bit or 64 bit steam id
+$key = trim(file_get_contents('/keys/apikey'));
+$openid = new LightOpenID('http://utley.tech/~stephen/warden/player.php');
+if(!$openid->mode){
+if(isset($_REQUEST['player'])){
+$openid->identity = 'http://steamcommunity.com/openid/';
+header('Location: ' . $openid->authUrl());
+}
+?>
+<form action="?player" method="post">
+<input type="image" src="http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_small.png">
+</form>
+<?php
+}
+else {
+echo $openid->validate() ? 'logged in' : 'failed';
+echo $openid->identity;
+$playerID = str_replace('http://steamcommunity.com/openid/id/','',$openid->identity);
+}
 $apiKey = trim(file_get_contents('/keys/apikey'));
 
 include 'heroesLib.php';
