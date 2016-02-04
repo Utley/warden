@@ -5,8 +5,13 @@
 <link rel="stylesheet" href="css/default.css" />
 </head>
 <body>
-  <?php include 'nav.php' ?>
-  <h1>Latest matches:</h1>
+  <?php
+  //if( $_REQUEST["update"] != "TRUE" ){
+    include 'nav.php';
+    ?>
+    <h1>Latest matches:</h1>
+<?php
+//  } ?>
 
 <?php
 $heroesArray = [];
@@ -64,5 +69,6 @@ for($i = 0; $i < sizeof($latestMatches); $i++){
 }
 echo '<br>';
 ?>
+<script src="liveupdate.js"></script>
 </body>
 </html>
