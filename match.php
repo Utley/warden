@@ -86,7 +86,7 @@ function getMatchDetails( $matchID ){
         echo "<td><img class='item' src='http://cdn.dota2.com/apps/dota2/images/items/" . $shortName . "_lg.png'></td>";
       }
       else{
-        echo "<td><img class='item' src='unknown.png' /></td>";
+        echo "<td><img class='item' src='unknown_item.png' /></td>";
       }
     }
     echo "</tr>";
