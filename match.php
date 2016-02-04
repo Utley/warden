@@ -24,6 +24,12 @@ include 'heroesLib.php';
 include 'itemsLib.php';
 include 'matchLib.php';
 
+function getMatchString( $id ){
+  $text = file_get_contents("/home/stephen/public_html/warden/data/modes.json");
+  $parsed = json_decode( $text );
+  return $parsed->mods[intval($id)]->name;
+};
+
 function getMatchDetails( $matchID ){
   global $apiKey;
 
@@ -31,7 +37,8 @@ function getMatchDetails( $matchID ){
   $itemsArray = getItemsArray();
   $match = getMatchObject( $matchID );
   $players = $match->players;
-  echo "<h1>$matchID ($match->game_mode)</h1>";
+  $matchString = getMatchString($match->game_mode);
+  echo "<h1>$matchID ($matchString)</h1>";
   echo "<h2>Began on " . date("l, F jS G:i:s", $match->start_time) . "</h2>";
 
   echo "<table class='table table-striped'>";

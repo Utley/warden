@@ -5,6 +5,9 @@
   <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
+<?php
+include('nav.php');
+?>
 <form action="match.php">
   <input type="text" name="match" id="matchId" />
   <input type="submit" />
@@ -51,9 +54,23 @@ function getPlayerHistory($playerID){
 };
 echo "<h1>Player: " . $playerID . "<br>";
 $matches = getPlayerHistory($playerID);
-foreach($matches as $match){
+$heroObj = [];
+
+foreach( $matches as $match ){
+  $players = $match->players;
+  foreach( $players as $player ){
+    if( $player->account_id + 76561197960265728 == $playerID ){
+      $heroObj[ $player->hero_id ] += 1;
+    }
+  }
   echo "<a href='match.php?match=" . "$match->match_id'>" . $match->match_id . "</a><br>";
 }
+$heroesArray = getHeroesArray();
+foreach($heroObj as $hero => $counts){
+  echo $heroesArray[$hero] . ": " . $counts;
+  echo "<br>";
+}
+
 ?>
 </body>
 </html>

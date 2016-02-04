@@ -14,15 +14,30 @@ $apiKey = trim(file_get_contents('/keys/apikey'));
 
 include 'heroesLib.php';
 
+function getPlayerName( $sID ){
+  globals($apiKey);
+  $steamURL = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=$apiKey&steamids=76561197960435530";
+  $ch = curl_init( $steamURL );
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, TRUE);
+  $head = curl_exec($ch);
+  curl_close($ch);
+  $jsonobj = json_decode($head);
+  return $jsonobj->personaname;
+};
+
+
+
 $heroesArray = getHeroesArray();
 $numberMatches = 5;
 $steamUrl = "https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/V001/?format=JSON&matches_requested=" . $numberMatches . "&key=" . $apiKey;
 $ch = curl_init($steamUrl);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);    # required for https urls
-$head = curl_exec($ch);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, TRUE);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+$head = curl_exec($ch);
 curl_close($ch);
 $obj = json_decode($head);
 $latestMatches = $obj->result->matches;
@@ -43,7 +58,6 @@ for($i = 0; $i < sizeof($latestMatches); $i++){
     else{
       echo '<img src="unknown.png" />';
     }
-
     echo '<br>';
   }
   echo '<br>';
