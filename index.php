@@ -48,10 +48,12 @@ $obj = json_decode($head);
 $latestMatches = $obj->result->matches;
 echo '<br>';
 for($i = 0; $i < sizeof($latestMatches); $i++){
+  ?>
+  <div class="match-wrapper">
+  <?php
   echo "<a class='matchLink' href='match.php?match=" . $latestMatches[$i]->match_id . "'>Match: " . $latestMatches[$i]->match_id . "</a>";
   $mID = $latestMatches[$i]->match_id;
 
-  echo '<br>';
   foreach ($latestMatches[$i]->players as $player){
     $smallName;
     if($player->hero_id > 0){
@@ -63,9 +65,11 @@ for($i = 0; $i < sizeof($latestMatches); $i++){
     else{
       echo '<img src="unknown.png" />';
     }
-    echo '<br>';
   }
   echo '<br>';
+  ?>
+</div>
+<?php
 }
 echo '<br>';
 ?>
