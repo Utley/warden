@@ -18,7 +18,7 @@
 
 <?php
 $matchID = $_REQUEST['match'];
-$apiKey = trim(file_get_contents('/keys/apikey'));
+$apiKey = trim(file_get_contents('/.config/apikey'));
 
 include 'heroesLib.php';
 include 'itemsLib.php';

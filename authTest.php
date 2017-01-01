@@ -1,6 +1,6 @@
 <?php
 include('openid.php');
-$key = trim(file_get_contents('/keys/apikey'));
+$key = trim(file_get_contents('/.config/apikey'));
 $openid = new LightOpenID('http://utley.tech/~stephen/warden/player.php');
 if(!$openid->mode){
 if(isset($_REQUEST['player'])){

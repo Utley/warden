@@ -16,7 +16,7 @@ include('nav.php');
 <?php
 include('openid.php');
 $playerID = isset($_REQUEST['player']) ? $_REQUEST['player'] : "76561198068938718"; //32 bit or 64 bit steam id
-$key = trim(file_get_contents('/keys/apikey'));
+$key = trim(file_get_contents('/.config/apikey'));
 $openid = new LightOpenID('http://utley.tech/~stephen/warden/player.php');
 if(!$openid->mode){
 if(isset($_REQUEST['player'])){
