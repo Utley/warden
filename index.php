@@ -73,6 +73,5 @@ for($i = 0; $i < sizeof($latestMatches); $i++){
 }
 echo '<br>';
 ?>
-<script src="liveupdate.js"></script>
 </body>
 </html>
