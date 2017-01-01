@@ -6,12 +6,9 @@
 </head>
 <body>
   <?php
-  //if( $_REQUEST["update"] != "TRUE" ){
     include 'nav.php';
     ?>
     <h1>Latest matches:</h1>
-<?php
-//  } ?>
 
 <?php
 $heroesArray = [];
